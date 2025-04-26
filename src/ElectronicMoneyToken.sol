@@ -10,7 +10,7 @@ import {ERC20Custodian} from "@openzeppelin/community-contracts/token/ERC20/exte
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract ElectrocinMoneyToken is
+contract ElectronicMoneyToken is
     ERC20,
     ERC20Burnable,
     ERC20Pausable,
@@ -25,8 +25,8 @@ contract ElectrocinMoneyToken is
     bytes32 public constant LIMITER_ROLE = keccak256("LIMITER_ROLE");
 
     constructor(address defaultAdmin, address pauser, address minter, address custodian, address limiter)
-        ERC20("ElectrocinMoneyToken", "EMT")
-        ERC20Permit("ElectrocinMoneyToken")
+        ERC20("ElectronicMoneyToken", "EMT")
+        ERC20Permit("ElectronicMoneyToken")
     {
         _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
         _grantRole(PAUSER_ROLE, pauser);
