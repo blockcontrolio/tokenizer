@@ -10,7 +10,15 @@ import {ERC20Custodian} from "@openzeppelin/community-contracts/contracts/token/
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract ElectrocinMoneyToken is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20Permit, ERC20Custodian, ERC20Blocklist {
+contract ElectrocinMoneyToken is
+    ERC20,
+    ERC20Burnable,
+    ERC20Pausable,
+    AccessControl,
+    ERC20Permit,
+    ERC20Custodian,
+    ERC20Blocklist
+{
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant CUSTODIAN_ROLE = keccak256("CUSTODIAN_ROLE");
