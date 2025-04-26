@@ -4,9 +4,9 @@ pragma solidity ^0.8.27;
 
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {ERC20Blocklist} from "@openzeppelin/community-contracts/contracts/token/ERC20/extensions/ERC20Blocklist.sol";
+import {ERC20Blocklist} from "@openzeppelin/community-contracts/token/ERC20/extensions/ERC20Blocklist.sol";
 import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import {ERC20Custodian} from "@openzeppelin/community-contracts/contracts/token/ERC20/extensions/ERC20Custodian.sol";
+import {ERC20Custodian} from "@openzeppelin/community-contracts/token/ERC20/extensions/ERC20Custodian.sol";
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
