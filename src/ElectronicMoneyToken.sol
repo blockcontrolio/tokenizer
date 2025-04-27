@@ -8,26 +8,22 @@ import {ERC20Blocklist} from "@openzeppelin/community-contracts/token/ERC20/exte
 import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import {ERC20Custodian} from "@openzeppelin/community-contracts/token/ERC20/extensions/ERC20Custodian.sol";
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
-import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract ElectronicMoneyToken is
-    ERC20,
-    ERC20Burnable,
-    ERC20Pausable,
-    AccessControl,
-    ERC20Permit,
-    ERC20Custodian,
-    ERC20Blocklist
-{
+contract ElectronicMoneyToken is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20Custodian, ERC20Blocklist {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant CUSTODIAN_ROLE = keccak256("CUSTODIAN_ROLE");
     bytes32 public constant LIMITER_ROLE = keccak256("LIMITER_ROLE");
 
-    constructor(address defaultAdmin, address pauser, address minter, address custodian, address limiter)
-        ERC20("ElectronicMoneyToken", "EMT")
-        ERC20Permit("ElectronicMoneyToken")
-    {
+    constructor(
+        string memory name,
+        string memory symbol,
+        address defaultAdmin,
+        address pauser,
+        address minter,
+        address custodian,
+        address limiter
+    ) ERC20(name, symbol) {
         _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
         _grantRole(PAUSER_ROLE, pauser);
         _grantRole(MINTER_ROLE, minter);
