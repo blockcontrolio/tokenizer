@@ -18,13 +18,13 @@ contract BCAccount is Ownable {
 
     receive() external payable {}
 
-    function execute(address target, uint256 value, bytes calldata data) external onlyOwner {
+    function execute(address target, uint256 value, bytes memory data) external onlyOwner {
         bool ok;
 
         if (target == address(0)) {
             address deployed;
             assembly {
-                deployed := create(value, add(data.offset, 0x20), mload(data.offset))
+                deployed := create(value, add(data, 0x20), mload(data))
             }
             ok = deployed != address(0);
         } else {
@@ -36,10 +36,10 @@ contract BCAccount is Ownable {
         }
     }
 
-    function executeBatch(Call[] calldata calls) external onlyOwner {
+    function executeBatch(Call[] memory calls) external onlyOwner {
         uint256 callsLength = calls.length;
         for (uint256 i = 0; i < callsLength; i++) {
-            Call calldata call = calls[i];
+            Call memory call = calls[i];
             bool ok;
 
             if (call.target == address(0)) {
