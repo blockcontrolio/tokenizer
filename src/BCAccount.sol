@@ -19,7 +19,18 @@ contract BCAccount is Ownable {
     receive() external payable {}
 
     function execute(address target, uint256 value, bytes calldata data) external onlyOwner {
-        bool ok = Exec.call(target, value, data, gasleft());
+        bool ok;
+
+        if (target == address(0)) {
+            address deployed;
+            assembly {
+                deployed := create(value, add(data.offset, 0x20), mload(data.offset))
+            }
+            ok = deployed != address(0);
+        } else {
+            ok = Exec.call(target, value, data, gasleft());
+        }
+
         if (!ok) {
             Exec.revertWithReturnData();
         }
@@ -29,7 +40,20 @@ contract BCAccount is Ownable {
         uint256 callsLength = calls.length;
         for (uint256 i = 0; i < callsLength; i++) {
             Call calldata call = calls[i];
-            bool ok = Exec.call(call.target, call.value, call.data, gasleft());
+            bool ok;
+
+            if (call.target == address(0)) {
+                address deployed;
+                uint256 value = call.value;
+                bytes memory data = call.data;
+                assembly {
+                    deployed := create(value, add(data, 0x20), mload(data))
+                }
+                ok = deployed != address(0);
+            } else {
+                ok = Exec.call(call.target, call.value, call.data, gasleft());
+            }
+
             if (!ok) {
                 if (callsLength == 1) {
                     Exec.revertWithReturnData();
