@@ -1,0 +1,10 @@
+@axelar-network/axelar-gmp-sdk-solidity/=lib/openzeppelin-community-contracts/node_modules/@axelar-network/axelar-gmp-sdk-solidity/
+@openzeppelin/community-contracts/=lib/openzeppelin-community-contracts/contracts/
+@openzeppelin/contracts-upgradeable/=lib/openzeppelin-community-contracts/lib/@openzeppelin-contracts-upgradeable/contracts/
+@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
+@zk-email/contracts/=lib/openzeppelin-community-contracts/node_modules/@zk-email/contracts/
+@zk-email/email-tx-builder/=lib/openzeppelin-community-contracts/lib/email-tx-builder/packages/contracts/
+account-abstraction/=lib/account-abstraction/contracts/
+forge-std/=lib/forge-std/src/
+openzeppelin-community-contracts/=lib/openzeppelin-community-contracts/contracts/
+openzeppelin-contracts/=lib/openzeppelin-contracts/
